@@ -1,7 +1,8 @@
 # kopendota
 
-[![Licence: GPL-3.0](https://img.shields.io/badge/licence-GPL--3.0-blue.svg)](LICENSE.md)
-[![Kotlin](https://img.shields.io/badge/kotlin-2.4.10-7F52FF.svg)](https://kotlinlang.org)
+[![Release](https://img.shields.io/github/v/release/yesitskev/kopendota?label=release&color=blue)](https://github.com/yesitskev/kopendota/releases/latest)
+[![Kotlin](https://img.shields.io/badge/dynamic/regex?url=https%3A%2F%2Fraw.githubusercontent.com%2Fyesitskev%2Fkopendota%2Fmain%2Fbuild.gradle.kts&search=kotlin%5C%28%22jvm%22%5C%29%20version%20%22%28%5B%5E%22%5D%2B%29%22&replace=%241&label=kotlin&color=7F52FF&logo=kotlin)](https://kotlinlang.org)
+[![Licence: GPL-3.0](https://img.shields.io/github/license/yesitskev/kopendota?label=licence&color=blue)](LICENSE.md)
 
 A non-official Kotlin client for the [OpenDota API](https://docs.opendota.com/), which serves Dota 2 match, player,
 hero, team and league data — including the detailed statistics OpenDota extracts from match replays.
