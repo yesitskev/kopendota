@@ -1,74 +1,100 @@
 name: Publish
 
 # Publishing is driven by the release, not by the tag alone, so a draft release can be prepared and reviewed before
-# anything reaches the registry. The version comes from the release, never from gradle.properties, which only ever
-# holds a snapshot, which Maven Central would not accept anyway.
+# anything reaches Maven Central. The version comes from the release, never from gradle.properties, which only ever
+# holds a snapshot.
+#
+# A manual run rehearses the same path without spending a version: only a release reaches the irreversible step,
+# while workflow_dispatch stops at an unreleased deployment or publishes a snapshot.
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version to upload without releasing, as X.Y.Z or vX.Y.Z. Blank publishes the snapshot in gradle.properties.
+        required: false
+        type: string
 
 concurrency:
-  group: publish-${{ github.event.release.tag_name }}
+  group: publish-${{ github.event.release.tag_name || inputs.version || github.ref }}
   cancel-in-progress: false
 
 jobs:
   publish:
     runs-on: ubuntu-latest
 
-    # Nothing is written back to the repository or its registries: the deployment goes to Maven Central.
+    # Nothing is written back to the repository: the deployment goes to Maven Central.
     permissions:
       contents: read
 
     steps:
       - uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.release.tag_name }}
+          ref: ${{ github.event.release.tag_name || github.ref }}
 
       - uses: actions/setup-java@v6
         with:
           distribution: temurin
           java-version: 17
 
-      # Pinned to a commit rather than a tag: this job can write to the package registry, and a third-party
-      # action's tag can be moved. Bump it by resolving the tag you want to its commit.
+      # Pinned to a commit rather than a tag: this job holds the Central credentials and the signing key, and a
+      # third-party action's tag can be moved. Bump it by resolving the tag you want to its commit.
       - uses: gradle/actions/setup-gradle@3f5f9adaf7d9fecd50b5935e54106014257a94e6 # v6.4.0
 
-      # vX.Y.Z and X.Y.Z both yield X.Y.Z. The tag is the authority; the release name is only consulted to catch a
-      # release named after a different version than it is tagged with, which would otherwise publish silently under
-      # the tag's version. A name that is not version-shaped is a title, not a disagreement, so it is ignored.
-      - name: Resolve the version from the release
-        id: release-version
+      # vX.Y.Z and X.Y.Z both yield X.Y.Z. On a release the tag is the authority; the release name is only consulted
+      # to catch a release named after a different version than it is tagged with, which would otherwise publish
+      # silently under the tag's version. A name that is not version-shaped is a title, not a disagreement.
+      - name: Resolve the version and the publish task
+        id: publication
         env:
-          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          VERSION: ${{ github.event.release.tag_name || inputs.version }}
           RELEASE_NAME: ${{ github.event.release.name }}
         run: |
           set -euo pipefail
 
           semver='^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$'
-          version="${RELEASE_TAG#v}"
+
+          # Only a release releases. A manual run leaves a deployment unreleased in the portal, where it can be
+          # inspected and dropped.
+          if [[ "$GITHUB_EVENT_NAME" == release ]]; then
+            task=publishAndReleaseToMavenCentral
+          else
+            task=publishToMavenCentral
+          fi
+          echo "task=${task}" >> "$GITHUB_OUTPUT"
+
+          # A manual run with no version publishes the snapshot gradle.properties holds. Nothing is consumed by
+          # doing so, which makes it the cheapest proof that the secrets and the signing key work.
+          if [[ -z "$VERSION" ]]; then
+            echo "args=" >> "$GITHUB_OUTPUT"
+            echo "\`${task}\` for the snapshot version in gradle.properties" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          version="${VERSION#v}"
 
           if ! [[ "$version" =~ $semver ]]; then
-            echo "::error::Release tag '${RELEASE_TAG}' is not vX.Y.Z or X.Y.Z, so it names no version to publish."
+            echo "::error::'${VERSION}' is not vX.Y.Z or X.Y.Z, so it names no version to publish."
             exit 1
           fi
 
           named_version="${RELEASE_NAME#v}"
           if [[ "$named_version" =~ $semver ]] && [[ "$named_version" != "$version" ]]; then
-            echo "::error::Release is named '${RELEASE_NAME}' but tagged '${RELEASE_TAG}'. Settle on one version."
+            echo "::error::Release is named '${RELEASE_NAME}' but tagged '${VERSION}'. Settle on one version."
             exit 1
           fi
 
-          echo "version=${version}" >> "$GITHUB_OUTPUT"
-          echo "Publishing ${version}" >> "$GITHUB_STEP_SUMMARY"
+          echo "args=-Pversion=${version}" >> "$GITHUB_OUTPUT"
+          echo "\`${task}\` for ${version}" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Test
-        run: ./gradlew test -Pversion=${{ steps.release-version.outputs.version }}
+        run: ./gradlew test ${{ steps.publication.outputs.args }}
 
-      # publishAndReleaseToMavenCentral, rather than publishToMavenCentral, because the GitHub release is the
-      # gate: a deployment left unreleased in the portal would need a second manual click to go public. A Maven
-      # Central release is permanent, so this step is the point of no return.
+      # On a release this is the point of no return, since a Maven Central release is permanent. A manual run stops
+      # at an unreleased deployment, or at a snapshot, both of which can be thrown away.
       - name: Publish to Maven Central
-        run: ./gradlew publishAndReleaseToMavenCentral -Pversion=${{ steps.release-version.outputs.version }}
+        run: ./gradlew ${{ steps.publication.outputs.task }} ${{ steps.publication.outputs.args }}
         env:
           ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
           ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
