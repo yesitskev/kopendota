@@ -1,6 +1,6 @@
 # kopendota
 
-[![Licence: MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](https://opensource.org/license/mit)
+[![Licence: GPL-3.0](https://img.shields.io/badge/licence-GPL--3.0-blue.svg)](LICENSE.md)
 [![Kotlin](https://img.shields.io/badge/kotlin-2.4.10-7F52FF.svg)](https://kotlinlang.org)
 
 A non-official Kotlin client for the [OpenDota API](https://docs.opendota.com/), which serves Dota 2 match, player,
@@ -119,15 +119,15 @@ val client =
     )
 ```
 
-| Argument | Default | What it does |
-| --- | --- | --- |
-| `billingSubscription` | Free allowance only | Allowances every call is counted against, and the key subscription-tier calls carry. |
-| `queueLimit` | `0` (unlimited) | How many calls may wait for a rate limit at once. Beyond it a call raises `OpenDotaQueueLimitExceeded`. |
-| `requestStrategy` | `FreeTierFirstRequestStrategy` | Which allowance each call is sent on. |
-| `json` | `OpenDotaClient.DEFAULT_JSON` | Serialiser the responses are deserialised with. |
-| `logging` | Logs nothing | Level and destination of the HTTP log. |
-| `timeouts` | 10s connect, 30s read, 10s write | Timeouts for the underlying OkHttp client. `Duration.ZERO` disables one. |
-| `baseUrl` | `OpenDotaClient.BASE_URL` | Base URL paths resolve against. Must end with `/`. |
+| Argument              | Default                          | What it does                                                                                            |
+|-----------------------|----------------------------------|---------------------------------------------------------------------------------------------------------|
+| `billingSubscription` | Free allowance only              | Allowances every call is counted against, and the key subscription-tier calls carry.                    |
+| `queueLimit`          | `0` (unlimited)                  | How many calls may wait for a rate limit at once. Beyond it a call raises `OpenDotaQueueLimitExceeded`. |
+| `requestStrategy`     | `FreeTierFirstRequestStrategy`   | Which allowance each call is sent on.                                                                   |
+| `json`                | `OpenDotaClient.DEFAULT_JSON`    | Serialiser the responses are deserialised with.                                                         |
+| `logging`             | Logs nothing                     | Level and destination of the HTTP log.                                                                  |
+| `timeouts`            | 10s connect, 30s read, 10s write | Timeouts for the underlying OkHttp client. `Duration.ZERO` disables one.                                |
+| `baseUrl`             | `OpenDotaClient.BASE_URL`        | Base URL paths resolve against. Must end with `/`.                                                      |
 
 A client owns an OkHttp connection pool, the threads that serve it and the scope queued calls wait on, so build one and
 share it rather than creating one per call. `close()` releases all three.
@@ -213,10 +213,10 @@ val client = OpenDotaClient(
 )
 ```
 
-| Allowance | Per day | Per sliding minute | Sent as |
-| --- | --- | --- | --- |
-| Free | 3,000 | 60 | No `api_key` |
-| Subscription | Unlimited | 3,000 | `api_key=<your key>` |
+| Allowance    | Per day   | Per sliding minute | Sent as              |
+|--------------|-----------|--------------------|----------------------|
+| Free         | 3,000     | 60                 | No `api_key`         |
+| Subscription | Unlimited | 3,000              | `api_key=<your key>` |
 
 Each call is counted against the day and against the second it was made in, which is what the sliding minute is summed
 from. Only a response OpenDota charges for moves a count: a 404, 429 or 500 is not billed. A 429 says a limit has been
@@ -329,10 +329,19 @@ generated code and documentation has not been exhaustively reviewed by hand, nor
 API responses — treat the field-level documentation in particular as a best-effort transcription of the specification,
 and expect gaps where the specification itself is thin or out of date.
 
+If there are missing fields, or incorrect fields, please create an issue or submit a pull request. The generated code 
+is intended to be a starting point for a client, and may not be complete or fully accurate. The author of this client is not responsible for any inaccuracies or omissions
+
 This project is not affiliated with, endorsed by or supported by OpenDota or its maintainers, or by Valve Corporation.
 Dota 2 is a registered trademark of Valve Corporation. The OpenDota API is subject to
 [OpenDota's own terms and limits](https://www.opendota.com/api-keys).
 
 ## Licence
 
-[MIT](https://opensource.org/license/mit) © Kevin Woodland
+[GNU General Public License v3.0](LICENSE.md) © Kevin Woodland
+
+## Contributing
+
+Bug reports and pull requests are welcome, and fixing a wrong or missing response field is the most useful thing you
+can send. [CONTRIBUTION.md](CONTRIBUTION.md) has the rules — every change ships with tests, a model change is backed
+by a live response rather than the specification, and AI assistance is disclosed.
