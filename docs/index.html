@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>kopendota</title>
+    <link href="images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="scripts/sourceset_dependencies.js" async="async"></script>
+<link href="styles/style.css" rel="Stylesheet">
+<link href="styles/main.css" rel="Stylesheet">
+<link href="styles/prism.css" rel="Stylesheet">
+<link href="styles/logo-styles.css" rel="Stylesheet">
+<link href="ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="index.html" tabindex="1">
+                    kopendota
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+1.0-SNAPSHOT        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":/main"
+                                       data-filter=":/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    kopendota
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" id="content" pageIds="kopendota::////PointingToDeclaration//-251573632">
+  <div class="breadcrumbs"></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>kopendota</span></span></h1>
+    <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><p class="paragraph">A non-official Kotlin client for the <a href="https://docs.opendota.com/">OpenDota API</a>, which serves Dota 2 match, player, hero, team and league data — including the detailed statistics OpenDota extracts from match replays.</p><p class="paragraph">The library is a Retrofit service definition plus the models its endpoints return, with a client that assembles the two. Every call is a <code class="lang-kotlin">suspend</code> function, and every response is deserialised with kotlinx.serialization.</p><h2 class="">Getting started</h2><p class="paragraph"><a href="kopendota/io.github.yesitskev.kopendota/-open-dota-client/index.html">OpenDotaClient</a> owns the Retrofit, OkHttp, JSON and rate limiting wiring, including the base URL every endpoint path is resolved against:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val client = OpenDotaClient()<br><br>val match = client.openDota.getMatch(matchId = 7108753629L)<br>val wins = client.openDota.getPlayerWinLoss(accountId = 88367253L, heroId = 1L)</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph">Every argument is optional. A subscription carries the API key and the allowances each call is counted against, and the queue bound, serialiser, HTTP logging and timeouts are configured alongside it:</p><div class="sample-container"><pre><code class="block lang-kotlin" theme="idea">val client =<br>    OpenDotaClient(<br>        billingSubscription = BillingSubscription(apiKey = System.getenv(&quot;OPEN_DOTA_API_KEY&quot;)),<br>        queueLimit = 500,<br>        json = Json(from = OpenDotaClient.DEFAULT_JSON) { prettyPrint = true },<br>        logging = OpenDotaLogging(level = OpenDotaLogLevel.BASIC, logger = { message -&gt; log.debug(message) }),<br>        timeouts = OpenDotaTimeouts(connect = 5.seconds, read = 60.seconds),<br>    )</code></pre><span class="copy-tooltip"><div class="copy-popup-wrapper popup-to-left"><span class="copy-popup-icon"></span><span>Content copied to clipboard</span></div><span class="copy-icon"></span></span></div><p class="paragraph">The default serialiser ignores unknown keys, and one of your own should too: OpenDota adds fields over time, and the models here track a single snapshot of the schema.</p><p class="paragraph">A client owns an OkHttp connection pool, the threads that serve it and the scope queued calls wait on, so build one and share it rather than creating one per call; <code class="lang-kotlin">close()</code> releases all three. Building the service with Retrofit directly stays an option, and <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/index.html">OpenDota</a> carries a worked example — though a service built that way is not rate limited, since nothing holds a call back or counts it.</p><h2 class="">What the API covers</h2><div class="table--container"><table><thead><tr><th>Area</th><th>Entry points</th></tr></thead><tbody><tr><td>Matches</td><td><a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-match.html">getMatch</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-pro-matches.html">getProMatches</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-public-matches.html">getPublicMatches</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-parsed-matches.html">getParsedMatches</a></td></tr><tr><td>Players</td><td><a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-player.html">getPlayer</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-player-matches.html">getPlayerMatches</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-player-heroes.html">getPlayerHeroes</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-player-peers.html">getPlayerPeers</a></td></tr><tr><td>Heroes</td><td><a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-heroes.html">getHeroes</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-hero-stats.html">getHeroStats</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-hero-matchups.html">getHeroMatchups</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-benchmarks.html">getBenchmarks</a></td></tr><tr><td>Teams and leagues</td><td><a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-teams.html">getTeams</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-team-matches.html">getTeamMatches</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-leagues.html">getLeagues</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-league-matches.html">getLeagueMatches</a></td></tr><tr><td>Aggregates</td><td><a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-distributions.html">getDistributions</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-rankings.html">getRankings</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-records.html">getRecords</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-item-timings.html">getItemTimings</a></td></tr><tr><td>Replay parsing</td><td><a href="kopendota/io.github.yesitskev.kopendota/-open-dota/submit-request.html">submitRequest</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-request-status.html">getRequestStatus</a></td></tr><tr><td>Raw access</td><td><a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-explorer.html">getExplorer</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-schema.html">getSchema</a>, <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-constants.html">getConstants</a></td></tr></tbody></table></div><h2 class="">Things to know</h2><ul><li><p class="paragraph"><strong>Nullability.</strong> Every model property is nullable, because OpenDota omits fields it has no data for. A parsed match   carries far more detail than an unparsed one, so the replay-derived fields on   <a href="kopendota/io.github.yesitskev.kopendota.model/-match-response-players/index.html">MatchResponsePlayers</a> are frequently absent.</p></li><li><p class="paragraph"><strong>Filters.</strong> The player endpoints share a large set of optional query parameters — <code class="lang-kotlin">limit</code>, <code class="lang-kotlin">win</code>, <code class="lang-kotlin">heroId</code>,   <code class="lang-kotlin">laneRole</code> and friends. Leaving one at its <code class="lang-kotlin">null</code> default omits it from the request.</p></li><li><p class="paragraph"><strong>Rate limits.</strong> Every call is held to what a   <a href="kopendota/io.github.yesitskev.kopendota/-billing-subscription/index.html">BillingSubscription</a> allows, by a   <a href="kopendota/io.github.yesitskev.kopendota/-rate-limiter/index.html">RateLimiter</a> that spends the free allowance — 3,000 requests a day and   60 a minute — before reaching for the subscription, which allows an unlimited day and 3,000 a minute. A call waits   where neither allowance has room, and   <a href="kopendota/io.github.yesitskev.kopendota/-open-dota-client/statistics.html">statistics</a> reports what is queued, what is in flight,   and what each allowance has spent of its ceiling.   <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/submit-request.html">submitRequest</a> counts as ten calls against it.</p></li><li><p class="paragraph"><strong>IDs.</strong> Hero, item, ability, patch, region, game mode and lobby type IDs are resolved through the   <a href="https://github.com/odota/dotaconstants">dotaconstants</a> repository, mirrored by   <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/get-constants.html">getConstants</a>.</p></li><li><p class="paragraph"><strong>Untyped payloads.</strong> A few endpoints return shapes that are keyed dynamically or vary by request, so they are   exposed as <code class="lang-kotlin">JsonElement</code> rather than a model.</p></li></ul></div></div>
+  </div>
+  <h2 class="">Packages</h2>
+  <div class="table"><a data-name="-621768583%2FPackages%2F-251573632" anchor-label="io.github.yesitskev.kopendota" id="-621768583%2FPackages%2F-251573632" data-filterable-set=":/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/main" data-filterable-set=":/main">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="kopendota/io.github.yesitskev.kopendota/index.html">io.github.yesitskev.kopendota</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-621768583%2FPackages%2F-251573632"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">jvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-621768583%2FPackages%2F-251573632" anchor-label="io.github.yesitskev.kopendota" id="-621768583%2FPackages%2F-251573632" data-filterable-set=":/main"></a>
+            <p class="paragraph"><a href="kopendota/io.github.yesitskev.kopendota/-open-dota-client/index.html">OpenDotaClient</a>, which builds a ready-to-use service, and the <a href="kopendota/io.github.yesitskev.kopendota/-open-dota/index.html">OpenDota</a> service definition it builds, covering every endpoint of the OpenDota API. <a href="kopendota/io.github.yesitskev.kopendota/-open-dota-logging/index.html">OpenDotaLogging</a> and <a href="kopendota/io.github.yesitskev.kopendota/-open-dota-timeouts/index.html">OpenDotaTimeouts</a> configure the client, and the error types a client will raise live here too — of which <a href="kopendota/io.github.yesitskev.kopendota/-open-dota-queue-limit-exceeded/index.html">OpenDotaQueueLimitExceeded</a> is the one anything throws so far.</p>
+          </span></div>
+      </div>
+    </div>
+<a data-name="-584079564%2FPackages%2F-251573632" anchor-label="io.github.yesitskev.kopendota.model" id="-584079564%2FPackages%2F-251573632" data-filterable-set=":/main"></a>
+    <div class="table-row table-row_platform-tagged" data-filterable-current=":/main" data-filterable-set=":/main">
+      <div>
+        <div class="main-subrow ">
+          <div class=""><span class="inline-flex">
+              <div><a href="kopendota/io.github.yesitskev.kopendota.model/index.html">io.github.yesitskev.kopendota.model</a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-584079564%2FPackages%2F-251573632"></span>
+                <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+              </span></span></div>
+          <div class="pull-right platform-tags--wrapper">
+            <div class="platform-tags no-gutters">
+              <div class="platform-tag jvm-like">jvm</div>
+            </div>
+          </div>
+        </div>
+        <div><span class="brief-comment"><a data-name="-584079564%2FPackages%2F-251573632" anchor-label="io.github.yesitskev.kopendota.model" id="-584079564%2FPackages%2F-251573632" data-filterable-set=":/main"></a>
+            <p class="paragraph">Response models for the OpenDota API.</p>
+          </span></div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>kopendota — a non-official Kotlin client for the OpenDota API</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

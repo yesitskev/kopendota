@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>io.github.yesitskev.kopendota</title>
+    <link href="../../images/logo-icon.svg" rel="icon" type="image/svg">
+        <script>var pathToRoot = "../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+      if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      } else {
+        const savedDarkMode = JSON.parse(storage)
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+      }
+    </script>
+<script type="text/javascript" src="../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../styles/style.css" rel="Stylesheet">
+<link href="../../styles/main.css" rel="Stylesheet">
+<link href="../../styles/prism.css" rel="Stylesheet">
+<link href="../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../scripts/safe-local-storage_blocking.js"></script>
+<script type="text/javascript" src="../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../ui-kit/ui-kit.min.js" defer="defer"></script>
+</head>
+<body>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../index.html" tabindex="1">
+                    kopendota
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+1.0-SNAPSHOT        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":/main"
+                                       data-filter=":/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
+            </div>
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    kopendota
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="package" id="content" pageIds="kopendota::io.github.yesitskev.kopendota////PointingToDeclaration//-251573632">
+  <div class="breadcrumbs"><a href="../../index.html">kopendota</a><span class="delimiter">/</span><span class="current">io.github.yesitskev.kopendota</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span><span>Package-level</span></span> <span><span>declarations</span></span></h1>
+    <div class="platform-hinted UnderCoverText" data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><p class="paragraph"><a href="-open-dota-client/index.html">OpenDotaClient</a>, which builds a ready-to-use service, and the <a href="-open-dota/index.html">OpenDota</a> service definition it builds, covering every endpoint of the OpenDota API. <a href="-open-dota-logging/index.html">OpenDotaLogging</a> and <a href="-open-dota-timeouts/index.html">OpenDotaTimeouts</a> configure the client, and the error types a client will raise live here too — of which <a href="-open-dota-queue-limit-exceeded/index.html">OpenDotaQueueLimitExceeded</a> is the one anything throws so far.</p><p class="paragraph">Rate limiting lives here as well. A <a href="-billing-subscription/index.html">BillingSubscription</a> holds the API key, the <a href="-billing-limits/index.html">BillingLimits</a> of each <a href="-billing-tier/index.html">BillingTier</a>, and the <a href="-billing-subscription-cache/index.html">BillingSubscriptionCache</a> its request counts are kept in — <a href="-in-memory-billing-subscription-cache/index.html">InMemoryBillingSubscriptionCache</a> unless you put a shared store behind the interface. A <a href="-rate-limiter/index.html">RateLimiter</a> holds every call to those limits, reading the <a href="-billing-tier-capacity/index.html">BillingTierCapacity</a> of each tier and asking a <a href="-request-strategy/index.html">RequestStrategy</a> which to send on; <a href="-free-tier-first-request-strategy/index.html">FreeTierFirstRequestStrategy</a> spends the free allowance before the subscription. <a href="-open-dota-client/statistics.html">OpenDotaClient.statistics</a> reports the result as <a href="-open-dota-statistics/index.html">OpenDotaStatistics</a>, a count of what is queued and in flight alongside the <a href="-open-dota-usage/index.html">OpenDotaUsage</a> each tier has spent of its day and its sliding minute.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="TYPE">Types</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="-736108042%2FClasslikes%2F-251573632" anchor-label="BillingLimits" id="-736108042%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-billing-limits/index.html"><span>Billing</span><wbr></wbr><span><span>Limits</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-736108042%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-billing-limits/index.html">BillingLimits</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>perDay<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>perMinute<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">How many requests one <a href="-billing-tier/index.html">BillingTier</a> allows in a period.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1663769297%2FClasslikes%2F-251573632" anchor-label="BillingSubscription" id="1663769297%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-billing-subscription/index.html"><span>Billing</span><wbr></wbr><span><span>Subscription</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1663769297%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-billing-subscription/index.html">BillingSubscription</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>apiKey<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>cache<span class="token operator">: </span><a href="-billing-subscription-cache/index.html">BillingSubscriptionCache</a><span class="token operator"> = </span>InMemoryBillingSubscriptionCache()<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>freeTierLimits<span class="token operator">: </span><a href="-billing-limits/index.html">BillingLimits</a><span class="token operator"> = </span>BillingLimits.FREE_TIER<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>subscriptionTierLimits<span class="token operator">: </span><a href="-billing-limits/index.html">BillingLimits</a><span class="token operator"> = </span>BillingLimits.SUBSCRIPTION_TIER<span class="token punctuation">, </span></span><span class="parameter ">clock<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/Clock.html">Clock</a><span class="token operator"> = </span>Clock.systemUTC()</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">The counts and limits of one OpenDota subscription, and the key its subscription-tier requests travel with.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1216637039%2FClasslikes%2F-251573632" anchor-label="BillingSubscriptionCache" id="1216637039%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-billing-subscription-cache/index.html"><span>Billing</span><wbr></wbr><span>Subscription</span><wbr></wbr><span><span>Cache</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1216637039%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-billing-subscription-cache/index.html">BillingSubscriptionCache</a></div><div class="brief "><p class="paragraph">Where a <a href="-billing-subscription/index.html">BillingSubscription</a> keeps its request counts.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="456033964%2FClasslikes%2F-251573632" anchor-label="BillingTier" id="456033964%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-billing-tier/index.html"><span>Billing</span><wbr></wbr><span><span>Tier</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="456033964%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-billing-tier/index.html">BillingTier</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-billing-tier/index.html">BillingTier</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">Which of a subscription's two allowances a request is counted against.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="838347794%2FClasslikes%2F-251573632" anchor-label="BillingTierCapacity" id="838347794%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-billing-tier-capacity/index.html"><span>Billing</span><wbr></wbr><span>Tier</span><wbr></wbr><span><span>Capacity</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="838347794%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-billing-tier-capacity/index.html">BillingTierCapacity</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>tier<span class="token operator">: </span><a href="-billing-tier/index.html">BillingTier</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>day<span class="token operator">: </span><a href="-open-dota-usage/index.html">OpenDotaUsage</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>minute<span class="token operator">: </span><a href="-open-dota-usage/index.html">OpenDotaUsage</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>isAvailable<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">What one <a href="-billing-tier/index.html">BillingTier</a> has left to spend, and whether a request can go out on it right now.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-167125383%2FClasslikes%2F-251573632" anchor-label="FreeTierFirstRequestStrategy" id="-167125383%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-free-tier-first-request-strategy/index.html"><span>Free</span><wbr></wbr><span>Tier</span><wbr></wbr><span>First</span><wbr></wbr><span>Request</span><wbr></wbr><span><span>Strategy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-167125383%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-free-tier-first-request-strategy/index.html">FreeTierFirstRequestStrategy</a> : <a href="-request-strategy/index.html">RequestStrategy</a></div><div class="brief "><p class="paragraph">Spends the free allowance first and falls back to the subscription once the free limits are reached.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1351724681%2FClasslikes%2F-251573632" anchor-label="InMemoryBillingSubscriptionCache" id="1351724681%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-in-memory-billing-subscription-cache/index.html"><span>In</span><wbr></wbr><span>Memory</span><wbr></wbr><span>Billing</span><wbr></wbr><span>Subscription</span><wbr></wbr><span><span>Cache</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1351724681%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-in-memory-billing-subscription-cache/index.html">InMemoryBillingSubscriptionCache</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">clock<span class="token operator">: </span><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/Clock.html">Clock</a><span class="token operator"> = </span>Clock.systemUTC()</span></span><span class="token punctuation">)</span> : <a href="-billing-subscription-cache/index.html">BillingSubscriptionCache</a></div><div class="brief "><p class="paragraph">A <a href="-billing-subscription-cache/index.html">BillingSubscriptionCache</a> holding its counts in this process, in a map that forgets an entry once its ttl passes.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1375962889%2FClasslikes%2F-251573632" anchor-label="OpenDota" id="-1375962889%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-open-dota/index.html"><span>Open</span><wbr></wbr><span><span>Dota</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1375962889%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="-open-dota/index.html">OpenDota</a></div><div class="brief "><p class="paragraph">Retrofit service definition for the <a href="https://docs.opendota.com/">OpenDota API</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2084758804%2FClasslikes%2F-251573632" anchor-label="OpenDotaClient" id="-2084758804%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-open-dota-client/index.html"><span>Open</span><wbr></wbr><span>Dota</span><wbr></wbr><span><span>Client</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2084758804%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-open-dota-client/index.html">OpenDotaClient</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">billingSubscription<span class="token operator">: </span><a href="-billing-subscription/index.html">BillingSubscription</a><span class="token operator"> = </span>BillingSubscription()<span class="token punctuation">, </span></span><span class="parameter ">queueLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter ">requestStrategy<span class="token operator">: </span><a href="-request-strategy/index.html">RequestStrategy</a><span class="token operator"> = </span>FreeTierFirstRequestStrategy<span class="token punctuation">, </span></span><span class="parameter ">json<span class="token operator">: </span><a href="https://kotlinlang.org/api/kotlinx.serialization/kotlinx-serialization-json/kotlinx.serialization.json/-json/index.html">Json</a><span class="token operator"> = </span>DEFAULT_JSON<span class="token punctuation">, </span></span><span class="parameter ">logging<span class="token operator">: </span><a href="-open-dota-logging/index.html">OpenDotaLogging</a><span class="token operator"> = </span>OpenDotaLogging()<span class="token punctuation">, </span></span><span class="parameter ">timeouts<span class="token operator">: </span><a href="-open-dota-timeouts/index.html">OpenDotaTimeouts</a><span class="token operator"> = </span>OpenDotaTimeouts()<span class="token punctuation">, </span></span><span class="parameter ">baseUrl<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator"> = </span>BASE_URL</span></span><span class="token punctuation">)</span> : <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/AutoCloseable.html">AutoCloseable</a></div><div class="brief "><p class="paragraph">Assembles a ready-to-use <a href="-open-dota/index.html">OpenDota</a> service, owning the Retrofit, OkHttp, JSON and rate limiting wiring that goes with it.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1221330567%2FClasslikes%2F-251573632" anchor-label="OpenDotaClientException" id="1221330567%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-open-dota-client-exception/index.html"><span>Open</span><wbr></wbr><span>Dota</span><wbr></wbr><span>Client</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1221330567%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">open </span><span class="token keyword">class </span><a href="-open-dota-client-exception/index.html">OpenDotaClientException</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">cause<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-throwable/index.html">Throwable</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span> : <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/IOException.html">IOException</a></div><div class="brief "><p class="paragraph">Base failure type raised when a call to the OpenDota API cannot be completed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="647502412%2FClasslikes%2F-251573632" anchor-label="OpenDotaLogging" id="647502412%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-open-dota-logging/index.html"><span>Open</span><wbr></wbr><span>Dota</span><wbr></wbr><span><span>Logging</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="647502412%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-open-dota-logging/index.html">OpenDotaLogging</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>level<span class="token operator">: </span><a href="-open-dota-log-level/index.html">OpenDotaLogLevel</a><span class="token operator"> = </span>OpenDotaLogLevel.NONE<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>logger<span class="token operator">: </span><span class="token punctuation">(</span>message<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">)</span><span class="token operator"> -&gt; </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-unit/index.html">Unit</a><span class="token operator"> = </span>DEFAULT_LOGGER</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">HTTP logging configuration for <a href="-open-dota-client/index.html">OpenDotaClient</a>.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-149646281%2FClasslikes%2F-251573632" anchor-label="OpenDotaLogLevel" id="-149646281%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-open-dota-log-level/index.html"><span>Open</span><wbr></wbr><span>Dota</span><wbr></wbr><span>Log</span><wbr></wbr><span><span>Level</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-149646281%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">enum </span><a href="-open-dota-log-level/index.html">OpenDotaLogLevel</a> : <a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-enum/index.html">Enum</a><span class="token operator">&lt;</span><a href="-open-dota-log-level/index.html">OpenDotaLogLevel</a><span class="token operator">&gt; </span></div><div class="brief "><p class="paragraph">How much detail <a href="-open-dota-client/index.html">OpenDotaClient</a> writes to the HTTP log.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1302328235%2FClasslikes%2F-251573632" anchor-label="OpenDotaNotFoundException" id="1302328235%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-open-dota-not-found-exception/index.html"><span>Open</span><wbr></wbr><span>Dota</span><wbr></wbr><span>Not</span><wbr></wbr><span>Found</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1302328235%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-open-dota-not-found-exception/index.html">OpenDotaNotFoundException</a></div><div class="brief "><p class="paragraph">Placeholder for the failure that will represent an HTTP 404 from the OpenDota API, returned for an unknown match, player, team or league.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-385997990%2FClasslikes%2F-251573632" anchor-label="OpenDotaQueueLimitExceeded" id="-385997990%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-open-dota-queue-limit-exceeded/index.html"><span>Open</span><wbr></wbr><span>Dota</span><wbr></wbr><span>Queue</span><wbr></wbr><span>Limit</span><wbr></wbr><span><span>Exceeded</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-385997990%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-open-dota-queue-limit-exceeded/index.html">OpenDotaQueueLimitExceeded</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>queueLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>queueDepth<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a></span></span><span class="token punctuation">)</span> : <a href="-open-dota-client-exception/index.html">OpenDotaClientException</a></div><div class="brief "><p class="paragraph">Raised when a request cannot be queued because <a href="-rate-limiter/queue-limit.html">RateLimiter.queueLimit</a> requests are already waiting for a rate limit to let them through.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1578518013%2FClasslikes%2F-251573632" anchor-label="OpenDotaRateLimitException" id="-1578518013%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-open-dota-rate-limit-exception/index.html"><span>Open</span><wbr></wbr><span>Dota</span><wbr></wbr><span>Rate</span><wbr></wbr><span>Limit</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1578518013%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-open-dota-rate-limit-exception/index.html">OpenDotaRateLimitException</a></div><div class="brief "><p class="paragraph">Placeholder for the failure that will represent an HTTP 429 from the OpenDota API, returned once the rate limit for the current API key — or for anonymous access — has been exhausted.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="298214399%2FClasslikes%2F-251573632" anchor-label="OpenDotaServerException" id="298214399%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-open-dota-server-exception/index.html"><span>Open</span><wbr></wbr><span>Dota</span><wbr></wbr><span>Server</span><wbr></wbr><span><span>Exception</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="298214399%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-open-dota-server-exception/index.html">OpenDotaServerException</a></div><div class="brief "><p class="paragraph">Placeholder for the failure that will represent an HTTP 5xx from the OpenDota API.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1789457004%2FClasslikes%2F-251573632" anchor-label="OpenDotaStatistics" id="-1789457004%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-open-dota-statistics/index.html"><span>Open</span><wbr></wbr><span>Dota</span><wbr></wbr><span><span>Statistics</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1789457004%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-open-dota-statistics/index.html">OpenDotaStatistics</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>queuedRequests<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>inFlightRequests<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>freeTierDay<span class="token operator">: </span><a href="-open-dota-usage/index.html">OpenDotaUsage</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>freeTierMinute<span class="token operator">: </span><a href="-open-dota-usage/index.html">OpenDotaUsage</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>subscriptionTierDay<span class="token operator">: </span><a href="-open-dota-usage/index.html">OpenDotaUsage</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>subscriptionTierMinute<span class="token operator">: </span><a href="-open-dota-usage/index.html">OpenDotaUsage</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">A snapshot of what a client is doing and what it has spent.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1476497381%2FClasslikes%2F-251573632" anchor-label="OpenDotaTimeouts" id="1476497381%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-open-dota-timeouts/index.html"><span>Open</span><wbr></wbr><span>Dota</span><wbr></wbr><span><span>Timeouts</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1476497381%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-open-dota-timeouts/index.html">OpenDotaTimeouts</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>connect<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-duration/index.html">Duration</a><span class="token operator"> = </span>10.seconds<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>read<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-duration/index.html">Duration</a><span class="token operator"> = </span>30.seconds<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>write<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-duration/index.html">Duration</a><span class="token operator"> = </span>10.seconds<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>call<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.time/-duration/index.html">Duration</a><span class="token operator"> = </span>Duration.ZERO</span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Timeouts applied to the OkHttp client <a href="-open-dota-client/index.html">OpenDotaClient</a> builds.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1719339830%2FClasslikes%2F-251573632" anchor-label="OpenDotaUsage" id="-1719339830%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-open-dota-usage/index.html"><span>Open</span><wbr></wbr><span>Dota</span><wbr></wbr><span><span>Usage</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1719339830%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">data </span><span class="token keyword">class </span><a href="-open-dota-usage/index.html">OpenDotaUsage</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>used<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>limit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-long/index.html">Long</a><span class="token operator">?</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">What one allowance has spent of one period, against the ceiling that period allows.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1962542239%2FClasslikes%2F-251573632" anchor-label="RateLimiter" id="-1962542239%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-rate-limiter/index.html"><span>Rate</span><wbr></wbr><span><span>Limiter</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1962542239%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="-rate-limiter/index.html">RateLimiter</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>subscription<span class="token operator">: </span><a href="-billing-subscription/index.html">BillingSubscription</a><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>queueLimit<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator"> = </span><span class="token constant">0</span><span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>strategy<span class="token operator">: </span><a href="-request-strategy/index.html">RequestStrategy</a><span class="token operator"> = </span>FreeTierFirstRequestStrategy</span></span><span class="token punctuation">)</span> : <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/AutoCloseable.html">AutoCloseable</a></div><div class="brief "><p class="paragraph">Holds requests to what a <a href="-billing-subscription/index.html">BillingSubscription</a> allows, picking the tier each one goes out on.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1070754265%2FClasslikes%2F-251573632" anchor-label="RequestStrategy" id="-1070754265%2FClasslikes%2F-251573632" data-filterable-set=":/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":/main" data-filterable-set=":/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-request-strategy/index.html"><span>Request</span><wbr></wbr><span><span>Strategy</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1070754265%2FClasslikes%2F-251573632"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":/main"><div class="symbol monospace"><span class="token keyword">fun </span><span class="token keyword">interface </span><a href="-request-strategy/index.html">RequestStrategy</a></div><div class="brief "><p class="paragraph">Chooses which <a href="-billing-tier/index.html">BillingTier</a> a request goes out on, or holds it back until one has room.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>kopendota — a non-official Kotlin client for the OpenDota API</div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
