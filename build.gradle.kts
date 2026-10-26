@@ -1,6 +1,6 @@
 plugins {
-    kotlin("jvm") version "2.4.10"
-    kotlin("plugin.serialization") version "2.4.10"
+    kotlin("jvm") version "2.4.21"
+    kotlin("plugin.serialization") version "2.4.21"
     id("org.jetbrains.dokka") version "2.2.0"
     `maven-publish`
 }
@@ -22,16 +22,16 @@ repositories {
 
 dependencies {
     api("com.squareup.retrofit2:retrofit:3.0.0")
-    api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
+    api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.12.0")
     api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
     implementation("com.squareup.retrofit2:converter-kotlinx-serialization:3.0.0")
-    implementation(platform("com.squareup.okhttp3:okhttp-bom:5.4.0"))
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:5.5.1"))
     implementation("com.squareup.okhttp3:okhttp")
     implementation("com.squareup.okhttp3:logging-interceptor")
-    testImplementation(platform("com.squareup.okhttp3:okhttp-bom:5.4.0"))
+    testImplementation(platform("com.squareup.okhttp3:okhttp-bom:5.5.1"))
     testImplementation("com.squareup.okhttp3:mockwebserver3")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
-    testImplementation(platform("org.junit:junit-bom:6.0.0"))
+    testImplementation(platform("org.junit:junit-bom:6.1.3"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
