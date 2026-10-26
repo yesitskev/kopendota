@@ -1,0 +1,26 @@
+version: 2
+
+updates:
+  # setup-gradle in publish.yml is pinned to a commit, which is what makes this file necessary: a pin that nothing
+  # bumps is a pin that rots. Dependabot moves the SHA and the version comment that documents it together.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      # Minor and patch bumps of the actions travel together, so routine upkeep is one pull request. A major lands
+      # on its own, where a changed input or a dropped Node runtime can be read in isolation.
+      actions:
+        patterns: ["*"]
+        update-types: [minor, patch]
+
+  - package-ecosystem: gradle
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      # Retrofit, OkHttp, kotlinx and JUnit are grouped on the same reasoning. A major is left alone because these
+      # are mostly api dependencies: a breaking change there reaches consumers' compile classpath, not just ours.
+      dependencies:
+        patterns: ["*"]
+        update-types: [minor, patch]

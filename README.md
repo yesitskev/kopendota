@@ -15,7 +15,7 @@ hero, team and league data — including the detailed statistics OpenDota extrac
 
 ## Status
 
-Early, and not yet published to Maven Central.
+Early. Distributed through [GitHub Packages](https://github.com/yesitskev/kopendota/packages) rather than Maven Central.
 
 The service definition ([`OpenDota`](src/main/kotlin/io/github/yesitskev/kopendota/OpenDota.kt)), the response
 models and [`OpenDotaClient`](src/main/kotlin/io/github/yesitskev/kopendota/OpenDotaClient.kt), which builds the
@@ -28,15 +28,46 @@ placeholders, so other failures surface as the exceptions Retrofit and OkHttp ra
 
 ## Requirements
 
-- **JDK 25.** The build sets no explicit `jvmTarget`, so the jar carries bytecode for whichever JDK compiled it —
-  currently Java 25 (class file version 69).
-- Kotlin 2.4.10
+- **JDK 17 or newer.** The build compiles against a Java 17 toolchain, so the jar carries Java 17 bytecode (class
+  file version 61) whichever JDK you build it with.
+- **Kotlin 2.0 or newer.** The library is built with Kotlin 2.4.10 but compiled at API and language version 2.0, so
+  an older compiler can still read it.
 
 ## Setup
 
+### From GitHub Packages
+
+GitHub Packages serves no anonymous downloads, so the repository needs credentials even though this one is public:
+a [personal access token](https://github.com/settings/tokens) carrying `read:packages`, kept out of the project in
+`~/.gradle/gradle.properties`.
+
+```properties
+gpr.user=your-github-username
+gpr.key=ghp_yourtoken
+```
+
+```kotlin
+repositories {
+    mavenCentral()
+    maven {
+        url = uri("https://maven.pkg.github.com/yesitskev/kopendota")
+        credentials {
+            username = providers.gradleProperty("gpr.user").get()
+            password = providers.gradleProperty("gpr.key").get()
+        }
+    }
+}
+
+dependencies {
+    implementation("io.github.yesitskev:kopendota:1.0.0")
+}
+```
+
+`mavenCentral()` stays: Retrofit, OkHttp and kotlinx come from there, and only kopendota itself from GitHub.
+
 ### Build from source
 
-No publishing plugin is wired up yet, so build the jar locally:
+To work against an unreleased change, build the jar locally:
 
 ```bash
 git clone https://github.com/yesitskev/kopendota.git
@@ -56,14 +87,6 @@ includeBuild("../kopendota")
 ```kotlin
 dependencies {
     implementation("io.github.yesitskev:kopendota")
-}
-```
-
-### Once published
-
-```kotlin
-dependencies {
-    implementation("io.github.yesitskev:kopendota:1.0.0")
 }
 ```
 

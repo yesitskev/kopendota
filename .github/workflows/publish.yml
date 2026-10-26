@@ -1,0 +1,71 @@
+name: Publish
+
+# Publishing is driven by the release, not by the tag alone, so a draft release can be prepared and reviewed before
+# anything reaches the registry. The version comes from the release, never from gradle.properties, which only ever
+# holds a snapshot.
+on:
+  release:
+    types: [published]
+
+concurrency:
+  group: publish-${{ github.event.release.tag_name }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.release.tag_name }}
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 17
+
+      # Pinned to a commit rather than a tag: this job can write to the package registry, and a third-party
+      # action's tag can be moved. Bump it by resolving the tag you want to its commit.
+      - uses: gradle/actions/setup-gradle@3f5f9adaf7d9fecd50b5935e54106014257a94e6 # v6.4.0
+
+      # vX.Y.Z and X.Y.Z both yield X.Y.Z. The tag is the authority; the release name is only consulted to catch a
+      # release named after a different version than it is tagged with, which would otherwise publish silently under
+      # the tag's version. A name that is not version-shaped is a title, not a disagreement, so it is ignored.
+      - name: Resolve the version from the release
+        id: release-version
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          RELEASE_NAME: ${{ github.event.release.name }}
+        run: |
+          set -euo pipefail
+
+          semver='^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.-]+)?$'
+          version="${RELEASE_TAG#v}"
+
+          if ! [[ "$version" =~ $semver ]]; then
+            echo "::error::Release tag '${RELEASE_TAG}' is not vX.Y.Z or X.Y.Z, so it names no version to publish."
+            exit 1
+          fi
+
+          named_version="${RELEASE_NAME#v}"
+          if [[ "$named_version" =~ $semver ]] && [[ "$named_version" != "$version" ]]; then
+            echo "::error::Release is named '${RELEASE_NAME}' but tagged '${RELEASE_TAG}'. Settle on one version."
+            exit 1
+          fi
+
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+          echo "Publishing ${version}" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Test
+        run: ./gradlew test -Pversion=${{ steps.release-version.outputs.version }}
+
+      - name: Publish to GitHub Packages
+        run: ./gradlew publishMavenPublicationToGitHubPackagesRepository -Pversion=${{ steps.release-version.outputs.version }}
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
