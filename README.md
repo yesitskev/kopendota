@@ -16,7 +16,7 @@ hero, team and league data — including the detailed statistics OpenDota extrac
 
 ## Status
 
-Early. Distributed through [GitHub Packages](https://github.com/yesitskev/kopendota/packages) rather than Maven Central.
+Early. Published to [Maven Central](https://central.sonatype.com/artifact/io.github.yesitskev/kopendota).
 
 The service definition ([`OpenDota`](src/main/kotlin/io/github/yesitskev/kopendota/OpenDota.kt)), the response
 models and [`OpenDotaClient`](src/main/kotlin/io/github/yesitskev/kopendota/OpenDotaClient.kt), which builds the
@@ -36,35 +36,17 @@ placeholders, so other failures surface as the exceptions Retrofit and OkHttp ra
 
 ## Setup
 
-### From GitHub Packages
-
-GitHub Packages serves no anonymous downloads, so the repository needs credentials even though this one is public:
-a [personal access token](https://github.com/settings/tokens) carrying `read:packages`, kept out of the project in
-`~/.gradle/gradle.properties`.
-
-```properties
-gpr.user=your-github-username
-gpr.key=ghp_yourtoken
-```
+### From Maven Central
 
 ```kotlin
 repositories {
     mavenCentral()
-    maven {
-        url = uri("https://maven.pkg.github.com/yesitskev/kopendota")
-        credentials {
-            username = providers.gradleProperty("gpr.user").get()
-            password = providers.gradleProperty("gpr.key").get()
-        }
-    }
 }
 
 dependencies {
     implementation("io.github.yesitskev:kopendota:1.0.0")
 }
 ```
-
-`mavenCentral()` stays: Retrofit, OkHttp and kotlinx come from there, and only kopendota itself from GitHub.
 
 ### Build from source
 

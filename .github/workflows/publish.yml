@@ -2,7 +2,7 @@ name: Publish
 
 # Publishing is driven by the release, not by the tag alone, so a draft release can be prepared and reviewed before
 # anything reaches the registry. The version comes from the release, never from gradle.properties, which only ever
-# holds a snapshot.
+# holds a snapshot, which Maven Central would not accept anyway.
 on:
   release:
     types: [published]
@@ -15,9 +15,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
 
+    # Nothing is written back to the repository or its registries: the deployment goes to Maven Central.
     permissions:
       contents: read
-      packages: write
 
     steps:
       - uses: actions/checkout@v7
@@ -64,8 +64,14 @@ jobs:
       - name: Test
         run: ./gradlew test -Pversion=${{ steps.release-version.outputs.version }}
 
-      - name: Publish to GitHub Packages
-        run: ./gradlew publishMavenPublicationToGitHubPackagesRepository -Pversion=${{ steps.release-version.outputs.version }}
+      # publishAndReleaseToMavenCentral, rather than publishToMavenCentral, because the GitHub release is the
+      # gate: a deployment left unreleased in the portal would need a second manual click to go public. A Maven
+      # Central release is permanent, so this step is the point of no return.
+      - name: Publish to Maven Central
+        run: ./gradlew publishAndReleaseToMavenCentral -Pversion=${{ steps.release-version.outputs.version }}
         env:
-          GITHUB_ACTOR: ${{ github.actor }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyId: ${{ secrets.SIGNING_KEY_ID }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_KEY_PASSWORD }}

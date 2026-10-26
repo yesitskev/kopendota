@@ -26,10 +26,11 @@ server-test-class:
 server-test-method:
 	$(GRADLE) test --tests "$(subst #,.,$(TEST_METHOD))"
 
-# Needs a GitHub token carrying write:packages, as gpr.user/gpr.key in ~/.gradle/gradle.properties or as
-# GITHUB_ACTOR/GITHUB_TOKEN in the environment.
+# Uploads a deployment to Maven Central without releasing it, leaving the last step to the portal. Releasing is
+# the release workflow's job, and is irreversible. Needs mavenCentralUsername/mavenCentralPassword and a signing
+# key in ~/.gradle/gradle.properties.
 server-publish:
-	$(GRADLE) publishMavenPublicationToGitHubPackagesRepository
+	$(GRADLE) publishToMavenCentral
 
 server-publish-local:
 	$(GRADLE) publishToMavenLocal
