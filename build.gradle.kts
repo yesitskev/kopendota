@@ -4,7 +4,7 @@ import com.vanniktech.maven.publish.KotlinJvm
 plugins {
     kotlin("jvm") version "2.4.21"
     kotlin("plugin.serialization") version "2.4.21"
-    id("org.jetbrains.dokka") version "2.2.0"
+    id("org.jetbrains.dokka") version "2.3.0"
     id("com.vanniktech.maven.publish") version "0.37.0"
 }
 
@@ -25,7 +25,7 @@ repositories {
 
 dependencies {
     api("com.squareup.retrofit2:retrofit:3.0.0")
-    api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.12.0")
+    api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.13.0")
     api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0")
     implementation("com.squareup.retrofit2:converter-kotlinx-serialization:3.0.0")
     implementation(platform("com.squareup.okhttp3:okhttp-bom:5.5.1"))
